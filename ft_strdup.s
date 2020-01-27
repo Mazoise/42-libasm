@@ -9,12 +9,11 @@ _ft_strdup:
 			call		_ft_strlen
 			mov			rdi, rax
 			call		_malloc
-			jb			.error
+			cmp			rax, 0			
+			je			.exit
 			pop			rsi
 			mov			rdi, rax
 			call		_ft_strcpy
 			jmp			.exit
-.error
-			mov			rax, 0
 .exit
 			ret
