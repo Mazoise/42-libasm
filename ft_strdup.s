@@ -8,6 +8,7 @@ _ft_strdup:
 			push		rdi
 			call		_ft_strlen
 			mov			rdi, rax
+			inc			rax
 			call		_malloc
 			cmp			rax, 0			
 			je			.exit
