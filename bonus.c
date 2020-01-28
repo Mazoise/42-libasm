@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 12:57:40 by mchardin          #+#    #+#             */
-/*   Updated: 2020/01/28 21:48:37 by mchardin         ###   ########.fr       */
+/*   Updated: 2020/01/28 22:05:58 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_list
 
 // int	ft_atoi_base(char *str, char *base);
 void ft_list_push_front(t_list **begin_list, void *data);
+int ft_list_size(t_list *begin_list);
 
 
 void	ft_lstprint(t_list *lst, char *cmt)
@@ -57,6 +58,7 @@ int main()
     printf("Ret is %p\n", l1); 
     printf("Data init ptr is %p and l1->data is %p (%s)\n", el, (char *)l1->data, l1->data);
     printf("Next is %p\n", l1->next);
+	printf("Size: %d\n", ft_list_size(0));
 	// t_list list;
 	// list.next = 0;
 	// list.data = 0;
