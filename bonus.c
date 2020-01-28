@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 12:57:40 by mchardin          #+#    #+#             */
-/*   Updated: 2020/01/28 18:11:55 by mchardin         ###   ########.fr       */
+/*   Updated: 2020/01/28 21:48:37 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,53 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-int	ft_atoi_base(char *str, char *base);
+typedef struct	s_list
+{
+	void			*data;
+	struct s_list	*next;
+}				t_list;
+
+// int	ft_atoi_base(char *str, char *base);
+void ft_list_push_front(t_list **begin_list, void *data);
+
+
+void	ft_lstprint(t_list *lst, char *cmt)
+{
+	int i;
+
+	i = 0;
+	printf("--- nodes ---\n");
+	if (cmt)
+		printf("| %s\n", cmt);
+	while (lst)
+	{
+		printf("| %d | \"%s\"\n", i++, lst->data);
+		lst = lst->next;
+	}
+	printf("---------------\n\n");
+}
 
 int main()
 {
-	printf("%d\n", ft_atoi_base("    	--+--12344'34", "01"));
+    t_list l3 = (t_list) { .data = "el 3", .next = NULL };
+    t_list l2 = (t_list) { .data = "el 2", .next = &l3 };
+    t_list *l1 = malloc(sizeof(t_list *));
+    *l1 = (t_list) { .data = "el 1", .next = &l2 };
+    ft_lstprint(l1, "Initialized");
+    printf("Sended ptr %p\n", l1);
+    char *el = "Salut";
+    ft_list_push_front(&l1, el);
+    ft_lstprint(l1, "Modified");
+    printf("Ret is %p\n", l1); 
+    printf("Data init ptr is %p and l1->data is %p (%s)\n", el, (char *)l1->data, l1->data);
+    printf("Next is %p\n", l1->next);
+	// t_list list;
+	// list.next = 0;
+	// list.data = 0;
+
+	// printf("%lu, %p, %p, %p\n", sizeof(t_list), &list, &list.data, list.next);
+	// printf("%d\n", ft_atoi_base("    	--+--12344'34", "01"));
+
 	// int x = 0;
 	// char str1[100];
 	// char str2[100];
