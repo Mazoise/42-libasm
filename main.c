@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 13:47:52 by mchardin          #+#    #+#             */
-/*   Updated: 2020/01/26 21:50:06 by mchardin         ###   ########.fr       */
+/*   Updated: 2020/01/28 12:43:15 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	*ft_strcpy(char*, const char*);
 int		ft_strcmp(char*, char*);
 ssize_t ft_write(int, char*, size_t);
 ssize_t ft_read(int, char*, size_t);
+
 
 int main()
 {

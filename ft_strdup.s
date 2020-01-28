@@ -2,7 +2,6 @@
 			extern		_malloc
 			extern		_ft_strcpy
 			extern		_ft_strlen
-			extern		_ft_strdup
 			section		.text
 _ft_strdup:	
 			push		rdi
