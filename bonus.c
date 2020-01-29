@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 12:57:40 by mchardin          #+#    #+#             */
-/*   Updated: 2020/01/28 22:05:58 by mchardin         ###   ########.fr       */
+/*   Updated: 2020/01/29 16:47:11 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,16 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+
+size_t	ft_strlen(const char*);
+char	*ft_strcpy(char*, const char*);
+int		ft_strcmp(char*, char*);
+ssize_t ft_write(int, char*, size_t);
+ssize_t ft_read(int, char*, size_t);
 // int	ft_atoi_base(char *str, char *base);
 void ft_list_push_front(t_list **begin_list, void *data);
 int ft_list_size(t_list *begin_list);
-
+int ft_list_sort(t_list **begin_list, int (*cmp)()); // VOID PAS INT
 
 void	ft_lstprint(t_list *lst, char *cmt)
 {
@@ -46,10 +52,10 @@ void	ft_lstprint(t_list *lst, char *cmt)
 
 int main()
 {
-    t_list l3 = (t_list) { .data = "el 3", .next = NULL };
-    t_list l2 = (t_list) { .data = "el 2", .next = &l3 };
+    t_list l3 = (t_list) { .data = "Bro", .next = NULL };
+    t_list l2 = (t_list) { .data = "Zulu", .next = &l3 };
     t_list *l1 = malloc(sizeof(t_list *));
-    *l1 = (t_list) { .data = "el 1", .next = &l2 };
+    *l1 = (t_list) { .data = "Yulu", .next = &l2 };
     ft_lstprint(l1, "Initialized");
     printf("Sended ptr %p\n", l1);
     char *el = "Salut";
@@ -58,7 +64,9 @@ int main()
     printf("Ret is %p\n", l1); 
     printf("Data init ptr is %p and l1->data is %p (%s)\n", el, (char *)l1->data, l1->data);
     printf("Next is %p\n", l1->next);
-	printf("Size: %d\n", ft_list_size(0));
+	printf("Size: %d\n", ft_list_size(l1));
+	printf("RET : (pas de ret normalement)%d\n", ft_list_sort(&l1, ft_strcmp));
+	ft_lstprint(l1, "Sorted");
 	// t_list list;
 	// list.next = 0;
 	// list.data = 0;
