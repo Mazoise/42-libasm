@@ -13,13 +13,15 @@ _ft_atoi_base:
 			je			.conv
 			mov			r8, rsi
 			inc			r8
-			cmp			byte[r8], 0
-			je			.conv
 			mov			rdi, rsi
 			push		r9
 			push		r10
 			push		r11
+			push		r8
+			push		rsi
 			call		_ft_is_whitespace
+			pop			rsi
+			pop			r8
 			pop			r11
 			pop			r10
 			pop			r9
@@ -29,6 +31,8 @@ _ft_atoi_base:
 			je			.error
 			cmp			byte[rsi], 45
 			je			.error
+			cmp			byte[r8], 0
+			je			.conv
 .while:
 			mov			r13, 0
 			mov			r13b, [rsi]

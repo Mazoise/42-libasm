@@ -11,6 +11,8 @@ BONUS_OBJS		= $(BONUS_SRCS:.s=.o)
 
 TEST_OBJS		= $(TEST_SRC:.c=.o)
 
+TESTB_OBJS		= $(TESTB_SRC:.c=.o)
+
 AS				= nasm
 
 CC				= gcc
@@ -25,17 +27,16 @@ RM				= rm -f
 
 NAME			= libasm.a
 
+all:			$(NAME)
+
 $(NAME):		$(OBJS)
 				$(AR) $(NAME) $(OBJS)
 
-all:			
-				$(MAKE) $(NAME)
-
-test:			$(NAME) $(TEST_OBJS)
-				$(CC) $(TEST_OBJS) ./$(NAME) -o run
-
 bonus:			all $(BONUS_OBJS)
-				$(AR) $(BONUS_NAME) $(BONUS_OBJS)
+				$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
+
+test:			bonus $(TEST_OBJS)
+				$(CC) $(TEST_OBJS) -L. -lasm -o run
 
 clean:
 				$(RM) $(OBJS)
@@ -44,5 +45,6 @@ clean:
 
 fclean:			clean
 				$(RM) $(NAME)
+				$(RM) run
 
 re:				fclean all

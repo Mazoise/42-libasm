@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:27:30 by mchardin          #+#    #+#             */
-/*   Updated: 2020/01/30 18:45:14 by mchardin         ###   ########.fr       */
+/*   Updated: 2020/01/30 19:52:08 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 void	atoib()
 {
 	printf("\nATOI BASE :\n");
+	printf("1010101010101111101, base 2                           : %d\n", ft_atoi_base("  +-+-1010101010101111101", "01"));
+	printf("-0234, base 10                                        : %d\n", ft_atoi_base("-0234", "0123456789"));
 	printf("(all whitespaces)+--+-56ff12ufjlesklkjflke, base hexa : %d\n", ft_atoi_base("     \t\r\f\n\v+--+-56ff12ufjlesklkjflke", "0123456789abcdef"));
-	printf("1010101010101111101, base 2 : %d\n", ft_atoi_base("  +-+-1010101010101111101", "01"));
-	printf("Error, should return 0 : %d\n", ft_atoi_base("alalaa", "lal"));
-	printf("Error, should return 0 : %d\n", ft_atoi_base("balalaa", "la"));
-	printf("Error, should return 0 : %d\n", ft_atoi_base("balalaa", "01"));
-	printf("-0234, base 10 : %d\n", ft_atoi_base("-0234", "0123456789"));
+	printf("Error, should return 0 (Nothing to conv)              : %d\n", ft_atoi_base("balalaa", "la"));
+	printf("Error, should return 0 (same char in base)            : %d\n", ft_atoi_base("alalaa", "lal"));
+	printf("Error, should return 0 (- in base)                    : %d\n", ft_atoi_base("101", "-01"));
+	printf("Error, should return 0 (+ in base)                    : %d\n", ft_atoi_base("alalaa", "la+"));
 }
 
 void	mandatory()
