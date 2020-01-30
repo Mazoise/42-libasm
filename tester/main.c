@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 18:27:30 by mchardin          #+#    #+#             */
-/*   Updated: 2020/01/30 19:52:08 by mchardin         ###   ########.fr       */
+/*   Updated: 2020/01/30 20:04:26 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int main(int argc, char **argv)
 		printf("\t-\"mandatory\"   for mandatory fonctions (strlen, strcmp, strdup, strcpy, write, read)\n");
 		printf("\t-\"lists\"       for chained lists (list_push_front, list_remove_if, list_size, list_sort)\n");
 		printf("\t-\"atoib\"       for atoi_base\n");
-		printf("\t-\"interactive\" for interactive mode\n\n");
+		printf("\t-\"interactive\" for interactive mode (warning, beta version)\n\n");
 	}
 	else if (!(strcmp(argv[1], "mandatory")))
 		mandatory();
