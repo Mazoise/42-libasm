@@ -16,7 +16,15 @@ _ft_list_sort:
 			push		rdi
 			mov			rdi, [r11]
 			mov			rsi, [r10]
+			push		r8
+			push		r9
+			push		r10
+			push		r11
 			call		r9
+			pop			r11
+			pop			r10
+			pop			r9
+			pop			r8
 			pop			rdi
 			cmp			rax, 0
 			jl			.swap

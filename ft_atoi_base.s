@@ -16,7 +16,13 @@ _ft_atoi_base:
 			cmp			byte[r8], 0
 			je			.conv
 			mov			rdi, rsi
+			push		r9
+			push		r10
+			push		r11
 			call		_ft_is_whitespace
+			pop			r11
+			pop			r10
+			pop			r9
 			cmp			rax, 1
 			je			.error
 			cmp			byte[rsi], 43
@@ -41,7 +47,13 @@ _ft_atoi_base:
 			pop			rsi
 .whitespace:
 			push		rdi
+			push		r9
+			push		r10
+			push		r11
 			call		_ft_is_whitespace
+			pop			r11
+			pop			r10
+			pop			r9
 			pop			rdi
 			cmp			rax, 1
 			je			.skip
@@ -53,7 +65,13 @@ _ft_atoi_base:
 .number:
 			push		rdi
 			push 		rsi
+			push		r9
+			push		r10
+			push		r11
 			call		_ft_is_in_base
+			pop			r11
+			pop			r10
+			pop			r9
 			pop			rsi
 			pop			rdi
 			cmp			rax, -1

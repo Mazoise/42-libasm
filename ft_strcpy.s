@@ -5,8 +5,8 @@ _ft_strcpy:
 .while:
 			cmp		byte [rsi], 0
 			je		.exit
-			mov		dl, byte [rsi]
-			mov		byte [rdi], dl
+			mov		r13b, byte [rsi]
+			mov		byte [rdi], r13b
 			inc		rsi
 			inc		rdi
 			jmp		.while

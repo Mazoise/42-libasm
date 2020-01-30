@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 12:57:40 by mchardin          #+#    #+#             */
-/*   Updated: 2020/01/30 12:40:05 by mchardin         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:12:52 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct	s_list
 	void			*data;
 	struct s_list	*next;
 }				t_list;
-
 
 size_t	ft_strlen(const char*);
 char	*ft_strcpy(char*, const char*);
