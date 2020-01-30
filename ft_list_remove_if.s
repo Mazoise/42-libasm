@@ -5,8 +5,10 @@ _ft_list_remove_if:
 			cmp			rdi, 0
 			je			.exit
 			mov			r9, rdi ; beg
-			; rdx, rcx
 .while:
+			mov			r11, [rdi]
+			cmp			r11, 0
+			je			.exit
 			push		rdi
 			push		rsi
 			push		rdx
@@ -24,8 +26,6 @@ _ft_list_remove_if:
 			je			.del
 			mov			rdi, [rdi]
 			add			rdi, 8
-			mov			r9, [rdi]
-			cmp			r9, 0
 			je			.exit
 			jmp			.while
 .del:
@@ -33,28 +33,25 @@ _ft_list_remove_if:
 			push		rdx
 			push		rcx
 			push		r9
-			push		rdi
-			mov			rdi, [rdi]
 			mov			r8, rdi
+			mov			r8, [r8]
 			add			r8, 8
 			mov			r8, [r8]
+			mov			r11, [rdi]
+			mov			[rdi], r8
+			mov			rdi, r11
+			push		rdi
 			mov			rdi, [rdi]
-			push		r8
 			call		rcx
-			pop			r8
 			pop			rdi
 			push		rdi
-			push		r8
-			mov			rdi, [rdi]
 			call		_free
-			pop			r8
 			pop			rdi
 			pop			r9
 			pop			rcx
 			pop			rdx
 			pop			rsi
-			mov			[rdi], r8
 			mov			rdi, r9
-			jmp			.exit
+			jmp			.while
 .exit:
 			ret

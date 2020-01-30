@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 12:57:40 by mchardin          #+#    #+#             */
-/*   Updated: 2020/01/29 22:48:17 by mchardin         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:40:05 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (
 
 void ft_free_fct(void *str)
 {
-	free((char*)str);
+	printf("%s, Del\n", (char*)str);
+	free(str);
 }
 
 
@@ -60,14 +61,14 @@ void	ft_lstprint(t_list *lst, char *cmt)
 int main()
 {
     t_list *l3 = malloc(sizeof(t_list *));
-	*l3 = (t_list) { .data = strdup("Bro"), .next = NULL };
+	*l3 = (t_list) { .data = strdup("Yulu"), .next = NULL };
     t_list *l2 = malloc(sizeof(t_list *));
-	*l2 = (t_list) { .data = strdup("Zulu"), .next = l3 };
+	*l2 = (t_list) { .data = strdup("Yulu"), .next = l3 };
     t_list *l1 = malloc(sizeof(t_list *));
     *l1 = (t_list) { .data = strdup("Yulu"), .next = l2 };
     ft_lstprint(l1, "Initialized");
     printf("Sended ptr %p\n", l1);
-    char *el = strdup("Salut");
+    char *el = strdup("Yulu");
     ft_list_push_front(&l1, el);
     ft_lstprint(l1, "Modified");
     printf("Ret is %p\n", l1); 
@@ -76,8 +77,9 @@ int main()
 	printf("Size: %d\n", ft_list_size(l1));
 	ft_list_sort(&l1, ft_strcmp);
 	ft_lstprint(l1, "Sorted");
-	ft_list_remove_if(&l1, "Salut", ft_strcmp, ft_free_fct);
+	ft_list_remove_if(&l1, "Yulu", ft_strcmp, ft_free_fct);
 	ft_lstprint(l1, "Deleted if \"Yulu\"");
+	system("leaks run");
 	// t_list list;
 	// list.next = 0;
 	// list.data = 0;
