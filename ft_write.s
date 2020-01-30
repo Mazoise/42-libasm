@@ -5,7 +5,7 @@ _ft_write:
 			syscall
 			jb			.error
 			jmp			.exit
-.error			
+.error:
 			mov			rax, -1
-.exit	
+.exit:
 			ret

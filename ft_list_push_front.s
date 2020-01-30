@@ -2,6 +2,8 @@
 			extern		_malloc
 			section		.text
 _ft_list_push_front:
+			cmp			rdi, 0
+			je			.error
 			push		rdi
 			push		rsi
 			mov			rdi, 16

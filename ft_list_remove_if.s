@@ -16,7 +16,7 @@ _ft_list_remove_if:
 			push		r9
 			mov			rdi, [rdi]
 			mov			rdi, [rdi]
-			call		rdx
+			call		rdx ; cmp
 			pop			r9
 			pop			rcx
 			pop			rdx
@@ -42,7 +42,7 @@ _ft_list_remove_if:
 			mov			rdi, r11
 			push		rdi
 			mov			rdi, [rdi]
-			call		rcx
+			call		rcx ; del data
 			pop			rdi
 			push		rdi
 			call		_free

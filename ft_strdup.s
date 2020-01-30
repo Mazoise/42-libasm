@@ -15,5 +15,5 @@ _ft_strdup:
 			mov			rdi, rax
 			call		_ft_strcpy
 			jmp			.exit
-.exit
+.exit:
 			ret

@@ -1,44 +1,48 @@
 
-SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s  ft_atoi_base.s ft_is_in_base.s ft_is_whitespace.s ft_list_push_front.s ft_list_size.s ft_list_sort.s ft_list_remove_if.s
+SRCS			= ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 
-TEST_SRC= main.c
+BONUS_SRCS		= ft_atoi_base.s ft_is_in_base.s ft_is_whitespace.s ft_list_push_front.s ft_list_size.s ft_list_sort.s ft_list_remove_if.s
 
-BONUS_SRC= bonus.c
+TEST_SRC		= ./tester/interactive.c ./tester/lists.c ./tester/main.c
 
-OBJS = $(SRCS:.s=.o)
+OBJS			= $(SRCS:.s=.o)
 
-TEST_OBJS = $(TEST_SRC:.c=.o)
+BONUS_OBJS		= $(BONUS_SRCS:.s=.o)
 
-BONUS_OBJS = $(BONUS_SRC:.c=.o)
+TEST_OBJS		= $(TEST_SRC:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra
-ASFLAGS = -fmacho64
-AS = nasm
-CC = gcc
+AS				= nasm
 
-AR = ar rc
+CC				= gcc
 
-RM = rm -f
+ASFLAGS			= -fmacho64
 
-NAME = libasm.a
+CFLAGS			= -Wall -Werror -Wextra -I ./tester/
 
-$(NAME):	$(OBJS)
-			$(AR) $(NAME) $(OBJS)
+AR				= ar rc
 
-all:		$(NAME)
+RM				= rm -f
 
-test:		$(NAME) $(TEST_OBJS)
-			$(CC) $(TEST_OBJS) ./$(NAME) -o run
+NAME			= libasm.a
 
-bonus:		$(NAME) $(BONUS_OBJS)
-			$(CC) $(BONUS_OBJS) ./$(NAME) -o run
+$(NAME):		$(OBJS)
+				$(AR) $(NAME) $(OBJS)
 
-clean:		
-			$(RM) $(OBJS)
-			$(RM) $(TEST_OBJS)
-			$(RM) $(BONUS_OBJS)
+all:			
+				$(MAKE) $(NAME)
 
-fclean:		clean
-			$(RM) $(NAME)
+test:			$(NAME) $(TEST_OBJS)
+				$(CC) $(TEST_OBJS) ./$(NAME) -o run
 
-re:			fclean all
+bonus:			all $(BONUS_OBJS)
+				$(AR) $(BONUS_NAME) $(BONUS_OBJS)
+
+clean:
+				$(RM) $(OBJS)
+				$(RM) $(TEST_OBJS)
+				$(RM) $(BONUS_OBJS)
+
+fclean:			clean
+				$(RM) $(NAME)
+
+re:				fclean all
